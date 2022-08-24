@@ -9,7 +9,8 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const expressValidator = require('express-validator');
-
+const internalServerError=require('./error-handlers/500')
+const notfound=require('./error-handlers/404')
 
 const app = express();
 //db
@@ -29,6 +30,8 @@ app.use(cors());
 
 // routes 
 app.use('/api',authRoute);
+app.use(internalServerError)
+app.use('*',notfound)
 app.listen(port, () => {
     console.log('listening on port ' + port);
 })
