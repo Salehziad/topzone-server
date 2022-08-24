@@ -6,4 +6,7 @@ const {userSignupValidator}=require('../validator/index') ;
 router.post('/signup',userSignupValidator,signup);
 router.post('/signin',signin);
 router.get('/signout',signout);
+router.get('/hi',(req,res)=>{
+    res.send("hhhhh")
+})
 module.exports=router;
